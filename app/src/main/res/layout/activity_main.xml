@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="331dp"
         android:layout_weight="0.25"
-        android:textSize="70dp" />
+        android:textSize="70dp"
+        android:id="@+id/minhaView"/>
 
     <LinearLayout
         android:layout_width="match_parent"
