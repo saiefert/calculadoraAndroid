@@ -8,22 +8,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private double resultado;
-
-    public double getMultiplica(double num) {
-        return this.resultado += num;
-    }
-
-    public void setResultado(double resultado){
-        this.resultado = resultado;
-    }
-
-    public double getResultado() {
-        return this.resultado;
-    }
-
     TextView textView;
+    double resultado = 0;
+    String operacao = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,24 +20,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void numeros(View view) {
-        Button botao = (Button) view;
-        String numero = botao.getText().toString();
-        String num = botao.getText().toString();
-        String guardaNum = textView.getText().toString();
-        textView.setText(guardaNum + num);
+
     }
 
     public void operacao(View view) {
         Button botaoOp = (Button) view;
 
-        if (botaoOp.getText().toString().equals("C")) {
-            textView.setText("");
-        } else if (botaoOp.getText().toString().equals("X")) {
-            String guardaNumero = textView.getText().toString();
-            getMultiplica(Double.parseDouble(guardaNumero));
+        String novaOperacao = botaoOp.getText().toString();
+        double valorDaTela = Double.valueOf(textView.getText().toString());
 
-        } else if (botaoOp.getText().toString().equals("=")) {
-            textView.setText(Double.toString(getResultado()));
+        if (operacao == null) {
+            operacao = novaOperacao;
+            resultado = valorDaTela;
+
+        }else{
+            if (operacao == "+"){
+                resultado = resultado + valorDaTela;
+            } else if (operacao == "-"){
+                resultado = resultado - valorDaTela;
+            } else if (operacao == "x"){
+                resultado = resultado - valorDaTela;
+            }else if (operacao == "/") {
+                resultado = resultado / valorDaTela;
+            }
         }
+
     }
 }
